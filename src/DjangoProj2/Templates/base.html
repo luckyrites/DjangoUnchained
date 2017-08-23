@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+</head>
+<body>
+<h1> From Html File </h1>
+<p1>
+		This is html coming through from .html file
+</p1>
+{% if bool_item %}
+	Random number is {{ num }}
+{% endif %}
+<br/>
+<p>
+{% for some_item in some_list %}
+		{% if some_item|divisibleby:"2" %}
+					Even number
+		{% endif %}
+
+		{{ some_item }}
+		<br/>
+{% endfor %}
+</p>
+
+
+</body>
+</html>
