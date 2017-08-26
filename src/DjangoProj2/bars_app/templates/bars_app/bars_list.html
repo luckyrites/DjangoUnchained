@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Bars: {{ block.super }} {% endblock title %}
+
+{% block content %}
+<h1> Bars List </h1>
+
+<ul>
+{% for list_item in object_list %}
+		<li>
+			<ul>
+				<hi>  <a href='/bars/{{ list_item.slug }}/'> {{ list_item.title }}</a> </i>
+				<i>{{ list_item.location }}</i>
+				<i>{{ list_item.cuisines }}</i>
+				<i>{{ list_item.timestamp }}</i>
+				<i>{{ list_item.updated }}</i>
+			</ul>
+		</li>
+{% endfor %}
+</ul>
+
+
+
+{% endblock content %}

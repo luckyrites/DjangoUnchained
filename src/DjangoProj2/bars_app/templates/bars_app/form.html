@@ -1,0 +1,27 @@
+{% extends  "base.html" %}
+
+{% block title %}Add Bar: {{ block.supe }}{% endblock title %}
+
+{% block content %}
+<h3>Add Bar</h3>
+
+<!-- {% if errors %}
+{{ errors }}
+{% endif %} -->
+
+<!-- {% if form.errors %}
+{{ form.errors }}
+{% endif %} -->
+
+{% if form.errors.non_field_errors %}
+{{ form.errors.non_field_errors }}
+{% endif %}
+<form method='POST'> {% csrf_token %}
+	<!-- <input type="text" name="name" placeholder="your title"><br/>
+	<input type="text" name ="location" placeholder="location"><br/>
+	<input type="text" name ="cuisines" placeholder="cuisines"><br/> -->
+	{{ form.as_p }}
+	<button type="submit">Save</button>
+</form>
+
+{% endblock content %}

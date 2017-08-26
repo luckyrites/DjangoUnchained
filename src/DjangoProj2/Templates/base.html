@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
+<title>{% block title %} Django Unchained {% endblock %}</title>
+{% include 'snippets/css.html' %}
 </head>
 <body>
-<h1> From Html File </h1>
-<p1>
-		This is html coming through from .html file
-</p1>
-{% if bool_item %}
-	Random number is {{ num }}
-{% endif %}
 <br/>
-<p>
-{% for some_item in some_list %}
-		{% if some_item|divisibleby:"2" %}
-					Even number
-		{% endif %}
-
-		{{ some_item }}
-		<br/>
-{% endfor %}
-</p>
+{% include 'snippets/nav.html' %}
 
 
+<div class='container'>
+{% block content2 %}
+<div style="color:red"><i><u>Hello there !!</u></i></div>
+<i>Content Block 2</i>
+{% endblock content2 %}
+{% block content %}
+<div style="color:indigo"><i><u>Hello there from content Block 1 !!</u></i></div>
+{% endblock content %}
+</div>
+
+{% include 'snippets/js.html' %}
 </body>
 </html>

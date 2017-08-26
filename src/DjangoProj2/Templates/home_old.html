@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br/>
+<h1> From Html File </h1>
+<br/>
+{{ block.super }}
+<br/>
+<i>Content Block </i>
+<br/>
+<p1>
+		This is html coming through from .html file
+</p1>
+{% if num is not None %}
+	Random number is {{ num }}
+{% endif %}
+<br/>
+<p>
+{% for some_item in some_list %}
+		{% if some_item|divisibleby:"2" %}
+					Even number
+		{% endif %}
+
+		{{ some_item }}
+		<br/>
+{% endfor %}
+</p>
+
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Bars Detail:{{ block.super }}{% endblock title %}
+
+{% block content %}
+<h2>Bars Details View</h2>
+<h3> {{ object.title }} <small> {{ object.cuisines }} </small></h3>
+<p>{{ object.location }}</p>
+<p>{{ object.timestamp }} <br/> <i>Updated</i> : {{ object.updated|timesince }} ago</p>
+{% endblock content%}
