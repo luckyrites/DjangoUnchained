@@ -28,6 +28,25 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# EMAIL_HOST = 'smtp.email-host-provider-domain.com'
+# EMAIL_HOST_USER = 'yourusername@youremail.com'
+# EMAIL_HOST_PASSWORD = 'your password'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'Your Name <you@email.com>'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'youremail@gmail.com' 
+EMAIL_HOST_PASSWORD = 'yourpassword'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+ADMINS = (
+    ('You', 'you@email.com'),
+)
+MANAGERS = ADMINS
+
 
 # Application definition
 
@@ -39,7 +58,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bars_app',
+    'profiles',
+    'menu', 
 ]
+
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend', # default
+#     # 'guardian.backends.ObjectPermissionBackend',
+#     )
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +78,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'DjangoProj2.urls'
+LOGIN_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {

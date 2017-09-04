@@ -23,11 +23,19 @@ class BarsLocationModelCreateForm(forms.ModelForm):
 			'name',
 			'location',
 			'cuisines',
+			#'slug',
 		]
+
+	def __init__(self,owner=None, *args, **kwargs):
+		#print(kwargs.pop('user'))
+		print(owner)
+		super(BarsLocationModelCreateForm, self).__init__(*args, **kwargs)
+		#self.fields['bars'].queryset = Bars_Location_Model.objects.filter(owner=user)
 
 	def clean_name(self):
 		name = self.cleaned_data.get('name')
 		if name == "hello":
+			#print('hello')
 			raise forms.ValidationError("Not a valid name")
 		return name 
 

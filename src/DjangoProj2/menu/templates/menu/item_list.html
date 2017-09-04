@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Menu Items : {{ block.super }} {% endblock title %}
+
+{% block content %}
+<h1> Menu Items <small><a href='{% url "menu:create" %}'>Add Item</a></small></h1>
+
+<ul>
+{% for list_item in object_list %}
+		<li>
+			<ul>
+				<i> <a href='{{ list_item.get_absolute_url }}'>{{ list_item.name }}</a></i>
+		<br/>
+				{% if list_item.contents %}
+				Contents:
+				<ul>{% for item in list_item.get_contents %}
+					<li>{{ item }}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+
+				{% if list_item.excludes %}
+				Excludes:
+				<ul>{% for item in list_item.get_excludes %}
+					<li>{{ item }}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}	
+			</ul>
+		</li>
+{% endfor %}
+</ul>
+
+
+
+{% endblock content %}

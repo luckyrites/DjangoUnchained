@@ -1,9 +1,9 @@
 {% extends  "base.html" %}
 
-{% block title %}Add Bar: {{ block.supe }}{% endblock title %}
+{% block title %} {{ title }}: {{ block.supe }}{% endblock title %}
 
 {% block content %}
-<h3>Add Bar</h3>
+<h3>{{ title }}</h3>
 
 <!-- {% if errors %}
 {{ errors }}
@@ -23,5 +23,9 @@
 	{{ form.as_p }}
 	<button type="submit">Save</button>
 </form>
+
+{% if form.instance %}
+	{{ form.instance.name }}
+{% endif %}
 
 {% endblock content %}

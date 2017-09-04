@@ -13,7 +13,7 @@ def clean_email(value):
 	if ".edu" in email:
 		raise ValidationError("We do not accept the 'edu' emails ")
 
-CUISINES = ['Mexican', 'Italian', 'American', 'Chinese', 'North Indian', 'South Indian']
+CUISINES = ['Mexican', 'Italian', 'American', 'Chinese', 'North Indian', 'South Indian','Asian Fusion']
 
 def validate_cuisines(value):
 	cuisine = value.capitalize()  #returns a copy of the string with first letter capitalized
