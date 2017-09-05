@@ -55,15 +55,15 @@ class Profile(models.Model):
 			html_message = '<p>Activate your account here:'+ path_ +'</p>'
 			#html_message = 'hanning(%d).pdf' % num
 			print(html_message)
-			# sent_mail = send_mail(
-			# 				subject, 
-			# 				message, 
-			# 				from_email, 
-			# 				recipient_list, 
-			# 				fail_silently=False, 
-			# 				html_message=html_message
-			# 				)
-			sent_mail = False
+			sent_mail = send_mail(
+							subject, 
+							message, 
+							from_email, 
+							recipient_list, 
+							fail_silently=False, 
+							html_message=html_message
+							)
+			#sent_mail = False
 			return sent_mail
 
 #after saving the user his/her profile will be created

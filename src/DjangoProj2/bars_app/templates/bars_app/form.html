@@ -24,6 +24,123 @@
 	<button type="submit">Save</button>
 </form>
 
+<!-- <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td>2009/01/12</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>2012/03/29</td>
+                <td>$433,060</td>
+            </tr>
+             </tbody>
+    </table> -->
+<table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+            <tr>
+                <th>name</th>
+                <th>location</th>
+                <th>cuisines</th>
+            </tr>
+    </thead>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+      $('#example').dataTable( {
+             "processing": true,
+             "ajax": {
+                 "processing": true,
+                 "url": '{% url "bars_app:json" %}',
+                 "dataSrc": ""
+             },
+
+             "columns": [
+                     { "data": "fields.name" },
+                     { "data": "fields.location" },
+                     { "data": "fields.cuisines" }
+                     // { "data": "pk" }
+                 ]
+         } );
+
+    //$('#example').DataTable();
+} );
+
+
+
+
+    $("#id_name").change(function () {
+      var name = $(this).val();
+      console.log(name);
+
+      $.ajax({
+       
+        // url: '/api/data',
+        url: '{% url "bars_app:validate_name" %}',
+        data: {
+          'name': name
+        },
+        dataType: 'json',
+        success: function (data) {
+        	console.log(data);
+          if (data.is_taken) {
+            alert(data.error_msg)
+          }
+        }
+      });
+
+    });
+    // $('#id_name').change(function(){
+    // 		console.log('chagned')
+
+    // });
+  </script>
 {% if form.instance %}
 	{{ form.instance.name }}
 {% endif %}

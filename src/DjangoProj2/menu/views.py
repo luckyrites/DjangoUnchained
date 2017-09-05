@@ -17,7 +17,7 @@ class HomeView(View):
 		# list_
 		# for x in user.is_following.all():
 		# 	list_.append(x.user.id)
-		qs = Item.objects.filter(user__id__in=is_following_user_ids,public=True).order_by("-updated")[:3] #limited to 3
+		qs = Item.objects.filter(user__id__in=is_following_user_ids,public=True).order_by("-updated")[:4] #limited to 3
 
 
 		return render(request, "menu/home-feed.html", { 'object_list':qs })

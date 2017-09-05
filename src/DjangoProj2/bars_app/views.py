@@ -11,6 +11,8 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 
 from .forms import BarsCreateForm, BarsLocationModelCreateForm
 from .models import Bars_Location_Model
+from django.http import JsonResponse
+from django.core import serializers
 
 # @login_required() #(login_url='/login/') #already set in base.py
 # def bars_CreateView(request):
@@ -73,6 +75,21 @@ from .models import Bars_Location_Model
 #         "object_list": queryset
 #     }
 #     return render(request,template_name,context)
+
+def json_index(request):
+    bars_as_json = serializers.serialize('json',Bars_Location_Model.objects.all())#filter(name__iexact=name))
+    context = bars_as_json
+    return HttpResponse(context,content_type = 'json')
+
+def validate_name(request):
+    name = request.GET.get('name',None)
+    print(name)
+    data = {
+        'is_taken': Bars_Location_Model.objects.filter(name__iexact=name).exists()
+    }
+    if data['is_taken']:
+        data['error_msg'] = "The Bar named : " + name + " alredy exists !!"
+    return JsonResponse(data)
 
 class BarsListView(LoginRequiredMixin, ListView):
     def get_queryset(self):

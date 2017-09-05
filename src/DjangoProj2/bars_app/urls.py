@@ -5,6 +5,8 @@ from .views import (
     BarsDetailView,
     BarsListView,
     BarsLocationUpdateView,
+    json_index,
+    validate_name,
     #bars_list_view,
     #ItalianBarsList,
     #ContinentalBarsList,
@@ -23,5 +25,9 @@ urlpatterns = [
     #url(r'^(?P<slug>[\w-]+)/edit/$',BarsLocationUpdateView.as_view(), name ='edit'),
     url(r'^(?P<slug>[\w-]+)/$',BarsLocationUpdateView.as_view(), name ='detail'),
     url(r'^$',BarsListView.as_view(), name ='list'),
+    
+    #for ajax calls
+    url(r'^validate_name$',validate_name, name='validate_name'),
+    url(r'^data$',json_index,name='json'),
 ]
  

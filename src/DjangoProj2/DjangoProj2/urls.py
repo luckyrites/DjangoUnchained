@@ -23,6 +23,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from profiles.views import ProfileFollowToggle, RegisterView, activate_user_view
 
 from menu.views import HomeView 
+from bars_app.views import json_index
+from ajaxify_app.views import JoinFormView
 #from bars_app.views import home,home2,home3,about,contact,ContactView,ContactViewTemplate
 #from bars_app.views import HomeView, AboutView, ContactView
 # from bars_app.views import (
@@ -39,6 +41,9 @@ from menu.views import HomeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
+    url(r'^join/$', JoinFormView.as_view()),
+
     # url(r'^', include('django.contrib.auth.urls')),
     url(r'^login/$',LoginView.as_view(), name='login'),
     url(r'^logout/$',LogoutView.as_view(), name='logout'),
@@ -77,5 +82,10 @@ urlpatterns = [
 
     url(r'^contact/$',TemplateView.as_view(template_name='contact.html'), name ='contact'),
     url(r'^about/$',TemplateView.as_view(template_name='about.html'), name='about'),
+    
+
+    #url(r'^bars/validate_name/$',validate_name, name='validate_name'),
+    # url(r'^api/data$',json_index,name='json'),
+    
 ]
  
